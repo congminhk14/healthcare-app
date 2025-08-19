@@ -21,7 +21,6 @@ export default function AuthGuard({ children, requireAuth = false }: IAuthGuardP
         setIsAuthenticated(data.isAuthenticated);
         
         if (requireAuth && !data.isAuthenticated) {
-          // Save current path to localStorage for redirect after login
           localStorage.setItem('redirectAfterLogin', pathname);
           router.push('/login');
         }
@@ -38,7 +37,6 @@ export default function AuthGuard({ children, requireAuth = false }: IAuthGuardP
     checkAuth();
   }, [requireAuth, pathname, router]);
 
-  // Show loading state while checking authentication
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -47,8 +45,6 @@ export default function AuthGuard({ children, requireAuth = false }: IAuthGuardP
     );
   }
 
-  // If auth is required but user is not authenticated, don't render children
-  // (they will be redirected to login)
   if (requireAuth && !isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center">

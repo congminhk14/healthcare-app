@@ -2,27 +2,26 @@
 
 import Image from "next/image";
 
-export interface MealData {
+export interface IMealData {
   id: number;
   date: string;
   type: string;
   image: string;
 }
 
-interface MealRecordsProps {
-  meals: MealData[];
+interface IMealRecordsProps {
+  meals: IMealData[];
   showMoreButton?: boolean;
   onShowMore?: () => void;
 }
 
-export default function MealRecords({ meals, showMoreButton = false, onShowMore }: MealRecordsProps) {
+export default function MealRecords({ meals, showMoreButton = false, onShowMore }: IMealRecordsProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Meal Records Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {meals.map((meal) => (
           <div key={meal.id} className="relative group cursor-pointer">
-            <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
+            <div className="aspect-square bg-gray-200   overflow-hidden">
               {meal.image ? (
                 <Image
                   src={meal.image}
@@ -44,13 +43,12 @@ export default function MealRecords({ meals, showMoreButton = false, onShowMore 
         ))}
       </div>
 
-      {/* More Records Button - Only show if there are more records */}
       {showMoreButton && (
         <div className="text-center">
-          <div className="inline-block rounded-lg p-6">
+          <div className="inline-block   p-6">
             <button 
               onClick={onShowMore}
-              className="bg-[#FFCC21] hover:bg-yellow-500 text-white px-8 py-3 rounded-lg font-medium transition-colors cursor-pointer"
+              className="bg-[#FFCC21] hover:bg-yellow-500 text-white px-8 py-3   font-medium transition-colors cursor-pointer"
             >
               記録をもっと見る
             </button>

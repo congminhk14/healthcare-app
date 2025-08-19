@@ -1,10 +1,15 @@
+import { Suspense, lazy } from 'react';
 import AuthGuard from '@/components/ui/AuthGuard';
-import TopPageClient from './TopPageClient';
+import TopPageSkeleton from '@/components/ui/skeletons/TopPageSkeleton';
+
+const TopPageClient = lazy(() => import('./TopPageClient'));
 
 export default function TopPage() {
   return (
     <AuthGuard requireAuth={true}>
-      <TopPageClient />
+      <Suspense fallback={<TopPageSkeleton />}>
+        <TopPageClient />
+      </Suspense>
     </AuthGuard>
   );
 }

@@ -1,19 +1,13 @@
 import { IUser } from '@/types/session';
 
-// Demo users for testing
+// account test login
 export const demoUsers: IUser[] = [
   {
     id: '1',
-    username: 'doctor@healthcare.jp',
+    username: 'demo@gmail.com',
     password: 'password123',
-    name: 'Doctor'
+    name: 'Demo Account'
   },
-  {
-    id: '2',
-    username: 'nurse@healthcare.jp',
-    password: 'password123',
-    name: 'Nurse'
-  }
 ];
 
 export function findUser(username: string, password: string): IUser | undefined {

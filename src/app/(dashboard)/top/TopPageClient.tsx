@@ -3,11 +3,10 @@
 import { useState } from "react";
 import HeroSection from "./components/HeroSection";
 import FilterButtons from "./components/FilterButtons";
-import MealRecords, { type MealData } from "./components/MealRecords";
+import MealRecords, { type IMealData } from "./components/MealRecords";
 
-// Sample data for the meal records
-const mealData: MealData[] = [
-  // Morning meals
+// dummy data
+const mealData: IMealData[] = [
   {
     id: 1,
     date: "05.21",
@@ -26,7 +25,6 @@ const mealData: MealData[] = [
     type: "Morning",
     image: "/images/top/morning-3.jpg",
   },
-  // Lunch meals
   {
     id: 4,
     date: "05.21",
@@ -45,7 +43,6 @@ const mealData: MealData[] = [
     type: "Lunch",
     image: "/images/top/lunch-3.jpg",
   },
-  // Dinner meals
   {
     id: 7,
     date: "05.21",
@@ -58,14 +55,12 @@ const mealData: MealData[] = [
     type: "Dinner",
     image: "/images/top/dinner-2.jpg",
   },
-  // Snack meals
   {
     id: 9,
     date: "05.21",
     type: "Snack",
     image: "/images/top/snack-1.jpg",
   },
-  // Additional meals without images
   {
     id: 10,
     date: "05.18",
@@ -115,20 +110,17 @@ export default function TopPageClient() {
   const [showAll, setShowAll] = useState(false);
   const percentAchievement = 75;
 
-  // Filter meals based on selected filter
   const filteredMeals = selectedFilter
     ? mealData.filter((meal) => meal.type === selectedFilter)
     : mealData;
 
-  // Show only first 8 meals initially, or all if showAll is true
   const displayedMeals = showAll ? filteredMeals : filteredMeals.slice(0, 8);
 
-  // Show "More Records" button only if there are more than 8 filtered meals
   const showMoreButton = filteredMeals.length > 8;
 
   const handleFilterChange = (filter: string | null) => {
     setSelectedFilter(filter);
-    setShowAll(false); // Reset pagination when filter changes
+    setShowAll(false);
   };
 
   const handleShowMore = () => {
@@ -137,16 +129,13 @@ export default function TopPageClient() {
 
   return (
     <div>
-      {/* Hero Section with Achievement and Chart */}
       <HeroSection percentAchievement={percentAchievement} />
       
-      {/* Filter Buttons Section */}
       <FilterButtons 
         selectedFilter={selectedFilter}
         onFilterChange={handleFilterChange}
       />
       
-      {/* Meal Records Section */}
       <MealRecords 
         meals={displayedMeals} 
         showMoreButton={showMoreButton && !showAll}

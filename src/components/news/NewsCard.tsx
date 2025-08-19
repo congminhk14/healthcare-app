@@ -7,7 +7,7 @@ interface INewsCardProps {
 
 export default function NewsCard({ article }: INewsCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+    <div className="bg-white   shadow-sm overflow-hidden hover:shadow-md transition-shadow">
       <div className="relative">
         <div className="aspect-w-16 aspect-h-9 bg-gray-200">
           {article.image ? (

@@ -40,10 +40,8 @@ export default function LoginForm() {
       const data = await response.json();
 
       if (response.ok) {
-        // Get redirect URL from localStorage or default to top page
         const redirectTo = localStorage.getItem('redirectAfterLogin') || '/top';
         
-        // Clear the redirect path from localStorage to avoid multiple redirects
         localStorage.removeItem('redirectAfterLogin');
         
         router.push(redirectTo);
@@ -78,12 +76,12 @@ export default function LoginForm() {
           {({ isSubmitting }) => (
             <Form className="mt-8 space-y-6">
               {error && (
-                <div className="rounded-md bg-red-50 p-4">
+                <div className="  bg-red-50 p-4">
                   <div className="text-sm text-red-800">{error}</div>
                 </div>
               )}
               
-              <div className="rounded-md shadow-sm -space-y-px">
+              <div className="  shadow-sm -space-y-px">
                 <div>
                   <label htmlFor="username" className="sr-only">
                     ユーザー名
@@ -119,18 +117,10 @@ export default function LoginForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting || isLoading}
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium   text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? 'ログイン中...' : 'ログイン'}
                 </button>
-              </div>
-              
-              <div className="text-sm text-gray-600">
-                <p className="mb-2">デモアカウント:</p>
-                <ul className="space-y-1">
-                  <li>医師: doctor@healthcare.jp / password123</li>
-                  <li>看護師: nurse@healthcare.jp / password123</li>
-                </ul>
               </div>
             </Form>
           )}

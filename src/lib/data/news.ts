@@ -88,7 +88,6 @@ export const newsArticles: INewsArticle[] = [
     image: '/images/column/column-8.jpg',
     tags: ['#魚料理', '#健康', '#DHA']
   },
-  // Additional articles without images
   {
     id: '9',
     title: '朝食の重要性と栄養バランスの取り方',
